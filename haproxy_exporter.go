@@ -182,12 +182,18 @@ var (
 		42: newFrontendMetric("http_responses_total", "Total of HTTP responses.", prometheus.CounterValue, prometheus.Labels{"code": "4xx"}),
 		43: newFrontendMetric("http_responses_total", "Total of HTTP responses.", prometheus.CounterValue, prometheus.Labels{"code": "5xx"}),
 		44: newFrontendMetric("http_responses_total", "Total of HTTP responses.", prometheus.CounterValue, prometheus.Labels{"code": "other"}),
+		46: newFrontendMetric("request_rate", "HTTP requests per second over last elapsed second.", prometheus.CounterValue, nil),
+		47: newFrontendMetric("max_request_rate", "Max number of HTTP requests per second observed.", prometheus.GaugeValue, nil),
 		48: newFrontendMetric("http_requests_total", "Total HTTP requests.", prometheus.CounterValue, nil),
 		51: newFrontendMetric("compressor_bytes_in_total", "Number of HTTP response bytes fed to the compressor", prometheus.CounterValue, nil),
 		52: newFrontendMetric("compressor_bytes_out_total", "Number of HTTP response bytes emitted by the compressor", prometheus.CounterValue, nil),
 		53: newFrontendMetric("compressor_bytes_bypassed_total", "Number of bytes that bypassed the HTTP compressor", prometheus.CounterValue, nil),
 		54: newFrontendMetric("http_responses_compressed_total", "Number of HTTP responses that were compressed", prometheus.CounterValue, nil),
+		77: newFrontendMetric("connections_rate", "Number of connections over the last elapsed second." prometheus.CounterValue, nil),
+		78: newFrontendMetric("max_connections_rate", "Highest known conn_rate.", prometheus.GaugeValue, nil),
 		79: newFrontendMetric("connections_total", "Total number of connections", prometheus.CounterValue, nil),
+		81: newFrontendMetric("denied_request", "Requests denied by 'tcp-request connection' rules", prometheus.CounterValue, nil),
+		82: newFrontendMetric("denied_session", "Requests denied by 'tcp-request session' rules", prometheus.CounterValue, nil),
 	}
 	backendMetrics = metrics{
 		2:  newBackendMetric("current_queue", "Current number of queued requests not assigned to any server.", prometheus.GaugeValue, nil),
@@ -224,6 +230,8 @@ var (
 		59: newBackendMetric("http_connect_time_average_seconds", "Avg. HTTP connect time for last 1024 successful connections.", prometheus.GaugeValue, nil),
 		60: newBackendMetric("http_response_time_average_seconds", "Avg. HTTP response time for last 1024 successful connections.", prometheus.GaugeValue, nil),
 		61: newBackendMetric("http_total_time_average_seconds", "Avg. HTTP total time for last 1024 successful connections.", prometheus.GaugeValue, nil),
+		81: newBackendMetric("denied_request", "Requests denied by 'tcp-request connection' rules", prometheus.CounterValue, nil),
+		82: newBackendMetric("denied_session", "Requests denied by 'tcp-request session' rules", prometheus.CounterValue, nil),
 	}
 
 	haproxyInfo = prometheus.NewDesc(prometheus.BuildFQName(namespace, "version", "info"), "HAProxy version info.", []string{"release_date", "version"}, nil)
