@@ -189,7 +189,7 @@ var (
 		52: newFrontendMetric("compressor_bytes_out_total", "Number of HTTP response bytes emitted by the compressor", prometheus.CounterValue, nil),
 		53: newFrontendMetric("compressor_bytes_bypassed_total", "Number of bytes that bypassed the HTTP compressor", prometheus.CounterValue, nil),
 		54: newFrontendMetric("http_responses_compressed_total", "Number of HTTP responses that were compressed", prometheus.CounterValue, nil),
-		77: newFrontendMetric("connections_rate", "Number of connections over the last elapsed second." prometheus.CounterValue, nil),
+		77: newFrontendMetric("connections_rate", "Number of connections over the last elapsed second.", prometheus.CounterValue, nil),
 		78: newFrontendMetric("max_connections_rate", "Highest known conn_rate.", prometheus.GaugeValue, nil),
 		79: newFrontendMetric("connections_total", "Total number of connections", prometheus.CounterValue, nil),
 		81: newFrontendMetric("denied_request", "Requests denied by 'tcp-request connection' rules", prometheus.CounterValue, nil),
